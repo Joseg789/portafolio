@@ -16,31 +16,25 @@ export const ParticlesBackground = () => {
     initParticlesEngine(async (engine) => {
       await loadSlim(engine);
       await loadPolygonPath(engine);
-    }).then(() => {
-      setInit(true);
-    });
+    }).then(() => setInit(true));
   }, []);
 
   const particlesLoaded = async (container?: Container): Promise<void> => {
-    console.log(container);
+    void container;
   };
 
   const options: ISourceOptions = useMemo(
     () => ({
       background: {
-        color: {
-          value: "#000000",
-        },
+        color: { value: "#000000" },
         opacity: 1,
       },
       fullScreen: { enable: false },
       fpsLimit: 120,
+
       interactivity: {
         events: {
-          onHover: {
-            enable: true,
-            mode: "trail",
-          },
+          onHover: { enable: true, mode: "trail" },
           onClick: { enable: false },
         },
         modes: {
@@ -51,17 +45,16 @@ export const ParticlesBackground = () => {
           },
         },
       },
+
       particles: {
         color: {
           value: [
-            "#ff0000",
-            "#ff6600",
-            "#ffcc00",
-            "#33ff00",
-            "#00ffcc",
-            "#0099ff",
-            "#6600ff",
-            "#ff00ff",
+            "#00e5ff", // --color-accent
+            "#40f4ff", // --color-accent-hover
+            "#00b8d9",
+            "#0099cc",
+            "#4fc3f7",
+            "#0077b6",
           ],
         },
         links: { enable: false },
@@ -69,7 +62,7 @@ export const ParticlesBackground = () => {
           direction: MoveDirection.none,
           enable: true,
           outModes: { default: OutMode.none },
-          speed: 3,
+          speed: 2.5,
           path: {
             enable: true,
             delay: { value: 0.01 },
@@ -88,44 +81,27 @@ export const ParticlesBackground = () => {
         },
         number: {
           density: { enable: true },
-          value: 120,
+          value: 100,
         },
-        opacity: { value: 1 },
+        opacity: { value: 0.7 },
         shape: { type: "circle" },
-        size: { value: 2 },
+        size: { value: 1.8 },
         reduceDuplicates: true,
-        interactivity: {
-          events: {
-            onHover: {
-              enable: true,
-              mode: "trail",
-            },
-            onClick: { enable: false },
-          },
-          modes: {
-            trail: {
-              delay: 0.1,
-              pauseOnStop: true,
-              quantity: 3,
-            },
-          },
-        },
       },
+
       detectRetina: true,
     }),
     [],
   );
 
-  if (init) {
-    return (
-      <Particles
-        id="tsparticles"
-        particlesLoaded={particlesLoaded}
-        options={options}
-        style={{ background: "#000000" }}
-      />
-    );
-  }
+  if (!init) return null;
 
-  return <></>;
+  return (
+    <Particles
+      id="tsparticles"
+      particlesLoaded={particlesLoaded}
+      options={options}
+      style={{ width: "100%", height: "100%", background: "#000000" }}
+    />
+  );
 };

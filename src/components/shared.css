@@ -1,0 +1,29 @@
+/* ─────────────────────────────────────────────
+   Shared section styles
+   Import this in App.css or in each section that needs it.
+   ───────────────────────────────────────────── */
+
+/* Base section padding and border */
+.section {
+  padding: 5rem 2rem;
+  border-bottom: 0.5px solid var(--color-border);
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Section label — "// About" style prefix */
+.section__label {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 3.5rem 1.25rem;
+  }
+}

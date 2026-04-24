@@ -1,55 +1,48 @@
-*,
-*::before,
-*::after {
+/* ─────────────────────────────────────────────
+   Google Fonts
+   ───────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Space+Mono:wght@400;700&display=swap');
+
+/* ─────────────────────────────────────────────
+   Design tokens
+   ───────────────────────────────────────────── */
+:root {
+  --font-heading: 'Syne', sans-serif;
+  --font-body:    'Space Mono', monospace;
+
+  --color-bg:          #050508;
+  --color-surface:     #0d0d12;
+  --color-border:      rgba(255, 255, 255, 0.08);
+
+  --color-text:        #e8e8f0;
+  --color-text-muted:  #6b6b80;
+
+  --color-accent:       #00e5ff;
+  --color-accent-hover: #00c8e0;
+}
+
+/* ─────────────────────────────────────────────
+   Reset
+   ───────────────────────────────────────────── */
+*, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
 html {
-  font-size: 16px;
   scroll-behavior: smooth;
-  -webkit-text-size-adjust: 100%;
+  font-size: 16px;
 }
 
 body {
-  min-height: 100vh;
-  line-height: 1.5;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-img,
-picture,
-video,
-canvas,
-svg {
-  display: block;
-  max-width: 100%;
-}
-
-input,
-button,
-textarea,
-select {
-  font: inherit;
-  border: none;
-  background: none;
-  outline: none;
-}
-
-button {
-  cursor: pointer;
-}
-
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  overflow-wrap: break-word;
+  overflow-x: hidden;
 }
 
 a {
@@ -57,32 +50,15 @@ a {
   text-decoration: none;
 }
 
-ul,
-ol {
-  list-style: none;
+img, svg {
+  display: block;
+  max-width: 100%;
 }
 
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-fieldset {
+button {
+  background: none;
   border: none;
-}
-
-:focus-visible {
-  outline: 2px solid currentColor;
-  outline-offset: 2px;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
 }
